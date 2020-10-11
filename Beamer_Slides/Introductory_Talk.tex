@@ -4,7 +4,8 @@
 \usetheme{Madrid}
 \usepackage{amssymb}
 \usepackage{enumitem}
-
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 \setitemize{label=\usebeamerfont*{itemize item}%
 	\usebeamercolor[fg]{itemize item}
 	\usebeamertemplate{itemize item}}
@@ -41,10 +42,11 @@
 \begin{frame}
 \frametitle{Generalization}
 
-Find $h_n$ that performs well on unseen data.\\
-Minimize true risk: $E[\ell (h(x), y)]$
+\begin{itemize}[itemsep = 12pt]
+	\item Find $h_n$ that performs well on unseen data.
+	\item Minimize true risk: $E[\ell (h(x), y)]$
 where  $(x, y)$ drawn independently from $P$.
-
+\end{itemize}
 
 \end{frame}
 
@@ -58,20 +60,20 @@ where  $(x, y)$ drawn independently from $P$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Generalization of performance}
-formulas and function class. Underfitting and overfitting
-\end{frame}
 
 \begin{frame}
 \frametitle{Generalization of performance}
-Grpah of U shaped curve
+\includegraphics[height=6cm]{UCurve.png}
+\\Classical curve from bias variance tradeoff.
 \end{frame}
 
 \begin{frame}
 \frametitle{Modern practice}
-Examples
-Even when levels of noise
+\begin{itemize}
+	\item Modern ML methods such as large neural networks and other non-linear predictors have very low to no training risk
+	\item NN architectures chosen such that interpolation can be achieved.
+	\item Works even when training data have high levels of noise.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
