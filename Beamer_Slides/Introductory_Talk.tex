@@ -9,7 +9,7 @@
 \setitemize{label=\usebeamerfont*{itemize item}%
 	\usebeamercolor[fg]{itemize item}
 	\usebeamertemplate{itemize item}}
-
+\setbeamertemplate{bibliography item}{\insertbiblabel}
 %Information to be included in the title page:
 \title[Introductory Talk] %optional
 {Overfitting and Generalization Performance}
@@ -110,6 +110,7 @@ We consider the following non-linear parametric model:
 	\[ h(\cdot) = \sum_{k=1}^{N} a_k\phi(\cdot, v_k) \] 
 	where $\phi(\cdot , v_k) := e^{i
 	\langle v_k , \cdot \rangle }$
+	vectors $v_1, ... , v_N$ are sampled independently from the standard normal distribution in $\mathbb{R}^d$.
 \end{block}
 $H_N$ has $N$ parameters in $\mathbb{C}$, \{ $a_1, ,,, a_n$ \}.\\
 As $N \to \infty$, $H_N$ becomes a closer approximation to $\mathcal{H}_\infty$
@@ -131,15 +132,24 @@ As $N \to \infty$, $H_N$ becomes a closer approximation to $\mathcal{H}_\infty$
 \includegraphics[height=7cm]{RFF-results.png}
 \end{frame}
 
-\begin{frame}
-\frametitle{Empirical Evidence - Neural Networks}
-Neural Networks. (Might be hard to explain why SGD is the inductive bias.)
-\end{frame}
-
 
 \begin{frame}
 \frametitle{Appendix on Approximation Theorem}
-On why they choose a function with a smaller norm in RKHS.
+\begin{block}{Approximation theorem}
+	Fix $h^* \in \mathcal{H}_\infty $  .
+	Let $(x_1,y_1), ..., (x_n,y_n)$ be i.i.d. random variables where $x_i$ drawn randomly from a compact cube $\Omega \subset \mathbb{R}^d $,
+	$y_i = h^*(x_i) \: \forall i$. There exists $A, B > 0$ such that for any interpolating $h \in \mathcal{H}_\infty $ with high probability
+	\[ \sup_{x \in \Omega} \vert h(x) - h^*(x)\vert < A e^{-B(n/log \, n)^{1/d}} (\| h^* \|_{\mathcal{H}_\infty} + \| h \|_{\mathcal{H}_\infty}) \]
+\end{block}
 \end{frame}
 
+%\begin{frame}
+%\frametitle{Main References}
+%\begin{thebibliography}{1}
+%	\bibitem{Kernel Learning} 
+%	Mikhail Belkin, Siyuan Ma, and Soumik Mandal. 
+%	\textit{To understand deep learning we need to understand kernel learning.} 
+%	In Proceedings of the 25th International Conference on Machine Learning, volume 80 of Proceedings of Machine Learning Research, pages 541-549, 2018.
+%\end{thebibliography}
+%\end{frame}
 \end{document} 
